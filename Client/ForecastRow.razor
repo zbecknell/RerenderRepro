@@ -1,0 +1,20 @@
+﻿<tr>
+    <td>@Forecast.Date.ToShortDateString()</td>
+    <td>@Forecast.TemperatureC</td>
+    <td>@Forecast.TemperatureF</td>
+    <td>@Forecast.Summary</td>
+</tr>
+
+@code {
+    [Parameter] public RerenderRepro.Shared.WeatherForecast Forecast { get; set; } = null!;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            Console.WriteLine($"Rendering ForecastRow");
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+}
