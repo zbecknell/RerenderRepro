@@ -8,11 +8,18 @@
 @code {
     [Parameter] public RerenderRepro.Shared.WeatherForecast Forecast { get; set; } = null!;
 
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("OnParametersSet: ForecastRow");
+
+        base.OnParametersSet();
+    }
+
     protected override void OnAfterRender(bool firstRender)
     {
         if (!firstRender)
         {
-            Console.WriteLine($"Rendering ForecastRow");
+            Console.WriteLine($"OnAfterRender: ForecastRow");
         }
 
         base.OnAfterRender(firstRender);
